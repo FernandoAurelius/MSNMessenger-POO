@@ -1,9 +1,20 @@
+import message.FacebookMessenger;
+import message.MSNMessenger;
+import message.Telegram;
+
 public class Principal {
     public static void main(String[] args) {
         MSNMessenger msn = new MSNMessenger();
+        FacebookMessenger facebook = new FacebookMessenger();
+        Telegram telegram = new Telegram();
 
-        // Agora está de acordo com o encapsulamento, e não exibe informações desnecessárias ao usuário final.
         msn.enviarMensagem();
         msn.receberMensagem();
+
+        facebook.enviarMensagem();
+        facebook.receberMensagem();
+
+        telegram.enviarMensagem();
+        telegram.receberMensagem();
     }
 }
