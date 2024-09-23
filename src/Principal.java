@@ -11,8 +11,12 @@ public class Principal {
         msn.enviarMensagem();
         msn.receberMensagem();
 
+        System.out.println();
+
         facebook.enviarMensagem();
         facebook.receberMensagem();
+
+        System.out.println();
 
         telegram.enviarMensagem();
         telegram.receberMensagem();
