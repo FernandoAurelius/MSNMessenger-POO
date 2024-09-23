@@ -1,24 +1,37 @@
 import message.FacebookMessenger;
+import message.InstantMessageService;
 import message.MSNMessenger;
 import message.Telegram;
 
+import java.util.Scanner;
+
+// Fluxo melhorado utilizando polimorfismo!
 public class Principal {
     public static void main(String[] args) {
-        MSNMessenger msn = new MSNMessenger();
-        FacebookMessenger facebook = new FacebookMessenger();
-        Telegram telegram = new Telegram();
+        InstantMessageService ims = null;
 
-        msn.enviarMensagem();
-        msn.receberMensagem();
+        ims = getChosenApp(getAppName(), ims);
 
-        System.out.println();
+        ims.enviarMensagem();
+        ims.receberMensagem();
+    }
 
-        facebook.enviarMensagem();
-        facebook.receberMensagem();
+    private static InstantMessageService getChosenApp(String appName, InstantMessageService ims) {
+        if (appName.equalsIgnoreCase("MSN")) {
+            return new MSNMessenger();
+        } else if (appName.equalsIgnoreCase("Facebook")) {
+            return new FacebookMessenger();
+        } else if (appName.equalsIgnoreCase("Telegram")) {
+            return new Telegram();
+        }
+        return getChosenApp(getAppName(), ims);
+    }
 
-        System.out.println();
-
-        telegram.enviarMensagem();
-        telegram.receberMensagem();
+    private static String getAppName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the messenger application (MSN/Facebook/Telegram): ");
+        String appName = sc.nextLine();
+        sc.close();
+        return appName;
     }
 }
