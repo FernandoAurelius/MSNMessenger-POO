@@ -8,15 +8,15 @@ import java.util.Scanner;
 // Fluxo melhorado utilizando polimorfismo!
 public class Principal {
     public static void main(String[] args) {
-        InstantMessageService ims = null;
+        InstantMessageService ims;
 
-        ims = getChosenApp(getAppName(), ims);
+        ims = getChosenApp(getAppName());
 
         ims.enviarMensagem();
         ims.receberMensagem();
     }
 
-    private static InstantMessageService getChosenApp(String appName, InstantMessageService ims) {
+    private static InstantMessageService getChosenApp(String appName) {
         if (appName.equalsIgnoreCase("MSN")) {
             return new MSNMessenger();
         } else if (appName.equalsIgnoreCase("Facebook")) {
@@ -24,7 +24,7 @@ public class Principal {
         } else if (appName.equalsIgnoreCase("Telegram")) {
             return new Telegram();
         }
-        return getChosenApp(getAppName(), ims);
+        return getChosenApp(getAppName());
     }
 
     private static String getAppName() {
