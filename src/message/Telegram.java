@@ -1,11 +1,12 @@
 package message;
 
-// Classe melhorada com herança e abstração!
+// Classe melhorada com herança, abstração e polimorfismo!
 public class Telegram extends InstantMessageService {
 
 
     @Override
     public void enviarMensagem() {
+        validarConexaoInternet();
         System.out.println("Enviando mensagem pelo Telegram!");
     }
 
