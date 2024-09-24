@@ -24,14 +24,13 @@ public class Principal {
         } else if (appName.equalsIgnoreCase("Telegram")) {
             return new Telegram();
         }
+        System.out.println("Você escolheu um serviço inválido. Por favor, tente novamente: ");
         return getChosenApp(getAppName());
     }
 
     private static String getAppName() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the messenger application (MSN/Facebook/Telegram): ");
-        String appName = sc.nextLine();
-        sc.close();
-        return appName;
+        return sc.nextLine();
     }
 }
